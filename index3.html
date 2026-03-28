@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal SNPMB 2026 - Index 3</title>
+    <style>
+        /* CSS Styling - Versi Index 3 */
+        body { font-family: 'Inter', sans-serif; background-color: #f0f2f5; margin: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px; box-sizing: border-box; }
+        .card { background: white; padding: 25px; border-radius: 16px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); width: 100%; max-width: 400px; border-top: 6px solid #3182ce; transition: 0.3s; }
+        
+        .header { text-align: center; margin-bottom: 25px; }
+        .logo { width: 130px; }
+        
+        h2 { color: #1a202c; font-size: 22px; margin: 10px 0; }
+        p { color: #4a5568; font-size: 14px; line-height: 1.5; }
+
+        /* Form Styling */
+        .input-group { text-align: left; margin-bottom: 15px; }
+        label { display: block; font-size: 11px; font-weight: 700; color: #718096; margin-bottom: 6px; letter-spacing: 0.5px; }
+        input { width: 100%; padding: 14px; border: 2px solid #edf2f7; border-radius: 10px; box-sizing: border-box; font-size: 15px; outline: none; transition: 0.3s; background: #f7fafc; }
+        input:focus { border-color: #3182ce; background: #fff; }
+
+        .btn { background: #3182ce; color: white; padding: 15px; border: none; border-radius: 10px; font-weight: 700; width: 100%; cursor: pointer; font-size: 16px; margin-top: 10px; box-shadow: 0 4px 12px rgba(49, 130, 206, 0.3); }
+        .btn:active { transform: scale(0.97); }
+
+        .btn-download { background: #38A169; margin-top: 10px; }
+
+        #error-msg { color: #e53e3e; background: #fff5f5; padding: 12px; border-radius: 8px; font-size: 13px; margin-bottom: 15px; display: none; border: 1px solid #fed7d7; }
+
+        /* Halaman Kartu Peserta */
+        #success-page { display: none; text-align: left; }
+        .kartu { border: 2px dashed #cbd5e0; padding: 15px; border-radius: 12px; margin-top: 15px; background: #fff; position: relative; }
+        
+        /* Bingkai Foto */
+        .foto-bingkai { width: 80px; height: 100px; border: 1px solid #cbd5e0; float: right; overflow: hidden; background: #e2e8f0; display: flex; align-items: center; justify-content: center; }
+        .foto-bingkai img { width: 100%; height: 100%; object-fit: cover; }
+
+        .info-peserta { font-size: 13px; color: #2d3748; line-height: 1.8; }
+        .qr { width: 60px; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <div class="header">
+            <img src="https://via.placeholder.com/150x50?text=SNPMB+2026" class="logo">
+        </div>
+
+        <div id="login-page">
+            <h2 style="text-align: center;">Masuk Akun (v3)</h2>
+            <div id="error-msg">⚠️ Email atau Password salah!</div>
+
+            <div class="input-group">
+                <label>EMAIL / USERNAME</label>
+                <input type="text" id="email" placeholder="juki23">
+            </div>
+
+            <div class="input-group">
+                <label>PASSWORD</label>
+                <input type="password" id="pass" placeholder="2233">
+            </div>
+
+            <button class="btn" onclick="cekLogin()">Masuk ke Sistem</button>
+        </div>
+
+        <div id="success-page">
+            <h2 style="color: #2b6cb0; text-align: center;">Kartu Peserta UTBK</h2>
+            <div id="area-kartu" class="kartu">
+                <div class="foto-bingkai">
+                    <img src="https://i.ibb.co.com/QvBGHckt/60458-20230509-170757.jpg" alt="Foto Juki">
+                </div>
+
+                <div class="info-peserta">
+                    <strong>Nama:</strong> Juki Pratama<br>
+                    <strong>Email:</strong> juki23<br>
+                    <strong>NISN:</strong> 0087654321<br>
+                    <strong>Lokasi:</strong> Universitas Indonesia<br>
+                    <strong>Jadwal:</strong> Gelombang 1 - Sesi 02
+                </div>
+                <div style="clear: both;"></div>
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=Juki23-Terverifikasi" class="qr">
+                <p style="font-size: 10px; color: #a0aec0; margin-top: 5px;">*Simpan kartu ini sebagai bukti pendaftaran sah.</p>
+            </div>
+            
+            <button class="btn btn-download" onclick="window.print()">Cetak Kartu (PDF)</button>
+            <button class="btn" style="background: #e53e3e; margin-top: 10px;" onclick="location.reload()">Logout</button>
+        </div>
+    </div>
+
+    <script>
+        function cekLogin() {
+            var inputEmail = document.getElementById('email').value;
+            var inputPass = document.getElementById('pass').value;
+            var error = document.getElementById('error-msg');
+
+            // Data sesuai permintaan: juki23 / 2233
+            if (inputEmail === "juki23" && inputPass === "2233") {
+                document.getElementById('login-page').style.display = 'none';
+                document.getElementById('success-page').style.display = 'block';
+            } else {
+                error.style.display = 'block';
+            }
+        }
+    </script>
+
+</body>
+</html>
